@@ -108,26 +108,35 @@ function renderList(id, items) {
 
 /* ---------- 姓氏起源查询 ---------- */
 const surnameList = document.getElementById("surnameList");
-Object.keys(SURNAME_DB).forEach(s => {
-  const opt = document.createElement("option");
-  opt.value = s;
-  surnameList.appendChild(opt);
-});
+[...new Set([...Object.keys(SURNAME_DB), ...Object.keys(SURNAME_BRIEF)])]
+  .sort((a, b) => a.localeCompare(b, "zh"))
+  .forEach(s => {
+    const opt = document.createElement("option");
+    opt.value = s;
+    surnameList.appendChild(opt);
+  });
 
 function lookupSurname() {
   const s = document.getElementById("surnameInput").value.trim();
   const box = document.getElementById("originResult");
   if (!s) return;
-  const info = SURNAME_DB[s[0]] || SURNAME_DB[s];
-  if (!info) {
-    box.innerHTML = `<p>暂未收录「${s}」姓的详细资料。中国现有在用姓氏 6000 余个，本站收录了王、李、张、刘、陈、杨、黄、赵、吴、周、林、何、郑、欧阳等主要大姓。</p>`;
-    return;
+  const key = SURNAME_DB[s] || SURNAME_DB[s[0]] ? (SURNAME_DB[s] ? s : s[0]) : null;
+  const detail = key ? SURNAME_DB[key] : null;
+  const brief = SURNAME_BRIEF[s];
+  if (detail) {
+    box.innerHTML = `
+      <h3>${s}姓 · ${detail.population}</h3>
+      <p><b>【起源】</b>${detail.origin}</p>
+      <p><b>【郡望】</b>${detail.junwang}</p>
+      <p><b>【迁徙】</b>${detail.migration}</p>`;
+  } else if (brief) {
+    box.innerHTML = `
+      <h3>${s}姓 · 起源简述</h3>
+      <p><b>【起源】</b>${brief}</p>
+      <p class="note">该姓收录于《百家姓》。各大姓的郡望、迁徙等详细资料正在陆续补充中。</p>`;
+  } else {
+    box.innerHTML = `<p>暂未收录「${s}」姓的详细资料。中国现有在用姓氏 6000 余个，本站已收录《百家姓》全部 504 个姓氏的起源简述。</p>`;
   }
-  box.innerHTML = `
-    <h3>${s}姓 · ${info.population}</h3>
-    <p><b>【起源】</b>${info.origin}</p>
-    <p><b>【郡望】</b>${info.junwang}</p>
-    <p><b>【迁徙】</b>${info.migration}</p>`;
 }
 document.getElementById("lookupBtn").addEventListener("click", lookupSurname);
 document.getElementById("surnameInput").addEventListener("keydown", e => {
