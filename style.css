@@ -1,0 +1,151 @@
+:root {
+  --primary: #9e2b25;
+  --primary-dark: #7a1f1a;
+  --gold: #c9a227;
+  --ink: #2b2b2b;
+  --paper: #faf6ef;
+  --card: #ffffff;
+  --muted: #7a736a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Songti SC", "Noto Serif SC", "SimSun", serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+.hero {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary) 60%, #b3423a);
+  color: #fff;
+  text-align: center;
+  padding: 72px 0 56px;
+}
+.hero h1 {
+  font-size: 3.2rem;
+  letter-spacing: 0.35em;
+  margin-bottom: 8px;
+  text-indent: 0.35em;
+}
+.hero .tagline { font-size: 1.2rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 10px; }
+.hero .sub { opacity: 0.9; margin-bottom: 28px; }
+.hero nav a {
+  display: inline-block;
+  margin: 0 12px;
+  padding: 8px 22px;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 24px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.hero nav a:hover { background: #fff; color: var(--primary); }
+
+.section { padding: 56px 0; }
+.section.alt { background: #f3ecdf; }
+.section h2 { font-size: 1.7rem; margin-bottom: 6px; color: var(--primary-dark); }
+.section-desc { color: var(--muted); margin-bottom: 28px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid #e8e0d0;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(120, 90, 40, 0.06);
+}
+
+.form-grid { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; }
+.form-grid label { flex: 1 1 220px; display: flex; flex-direction: column; font-weight: bold; gap: 6px; }
+input[type="text"], select {
+  padding: 10px 12px;
+  border: 1px solid #d8cfbc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fffdf8;
+}
+input:focus, select:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--primary-dark); }
+
+.results .card h3 { margin-bottom: 14px; }
+.name-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.name-list li {
+  background: #fdf9f0;
+  border: 1px solid #eee3c8;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.name-list b { font-size: 1.25rem; color: var(--primary-dark); display: block; }
+.name-list small { color: var(--muted); }
+.note { font-size: 0.85rem; color: var(--muted); }
+.muted { color: var(--muted); }
+.hidden { display: none; }
+
+.origin-row { display: flex; gap: 12px; margin: 12px 0 20px; flex-wrap: wrap; }
+.origin-row input { flex: 1 1 200px; }
+.origin-result h3 { color: var(--primary-dark); margin-bottom: 10px; font-size: 1.3rem; }
+.origin-result p { margin-bottom: 10px; }
+
+.timeline { border-left: 3px solid var(--gold); margin: 0 0 32px 8px; padding-left: 24px; }
+.era { position: relative; margin-bottom: 28px; }
+.era::before {
+  content: "";
+  position: absolute;
+  left: -32px; top: 8px;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--paper);
+}
+.era-time { font-size: 0.85rem; color: var(--muted); letter-spacing: 0.05em; }
+.era h3 { color: var(--primary-dark); margin: 2px 0 6px; }
+
+.bjx {
+  font-size: 1.05rem;
+  line-height: 2.2;
+  letter-spacing: 0.3em;
+  color: var(--ink);
+}
+
+.chart .bar-row { display: flex; align-items: center; margin-bottom: 8px; gap: 12px; }
+.chart .bar-row > span {
+  width: 28px; text-align: center;
+  font-size: 1.1rem; color: var(--primary-dark); font-weight: bold;
+  flex-shrink: 0;
+}
+.chart .bar {
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+footer { background: var(--ink); color: #cfc8bd; text-align: center; padding: 32px 0; margin-top: 40px; }
+footer a { color: var(--gold); }
+footer .muted { color: #8a8378; font-size: 0.85rem; }
+
+@media (max-width: 560px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero nav a { display: block; margin: 8px auto; width: fit-content; }
+}

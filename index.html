@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佳名堂 · 中国宝宝起名与姓氏文化</title>
+<meta name="description" content="输入父母双方姓名，为宝宝生成乳名与正式姓名，并解读姓氏起源、百家姓五千年演化历史。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <h1>佳名堂</h1>
+    <p class="tagline">承千年姓氏文化，为宝宝取一生佳名</p>
+    <p class="sub">输入父母双方姓名，智能生成乳名与大名 · 解读姓氏起源 · 探索百家姓五千年演化</p>
+    <nav>
+      <a href="#generator">起名生成器</a>
+      <a href="#origin">姓氏起源</a>
+      <a href="#evolution">百家姓演化</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ 起名生成器 ============ -->
+<section id="generator" class="section">
+  <div class="container">
+    <h2>一、宝宝起名生成器</h2>
+    <p class="section-desc">根据父母双方的姓名，结合五行、寓意与音韵，为宝宝生成乳名（小名）和身份证上的正式姓名。</p>
+
+    <form id="nameForm" class="card">
+      <div class="form-grid">
+        <label>父亲姓名<input type="text" id="fatherName" placeholder="例如：王志远" required></label>
+        <label>母亲姓名<input type="text" id="motherName" placeholder="例如：林晓梅" required></label>
+      </div>
+      <div class="form-grid">
+        <label>宝宝姓氏
+          <select id="surname">
+            <option value="father">随父亲姓氏</option>
+            <option value="mother">随母亲姓氏</option>
+            <option value="double">父母双姓组合</option>
+          </select>
+        </label>
+        <label>宝宝性别
+          <select id="gender">
+            <option value="boy">男宝宝</option>
+            <option value="girl">女宝宝</option>
+            <option value="neutral">都可以 / 不透露</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit" class="btn-primary">开始生成名字</button>
+    </form>
+
+    <div id="results" class="results hidden">
+      <div class="card">
+        <h3>👶 乳名（小名）推荐</h3>
+        <ul id="nicknames" class="name-list"></ul>
+      </div>
+      <div class="card">
+        <h3>🎓 正式姓名推荐（用于身份证）</h3>
+        <ul id="fullnames" class="name-list"></ul>
+      </div>
+      <p class="note">名字由本页 JavaScript 结合父母姓名用字、传统寓意字库与音韵搭配规则本地生成，仅供参考娱乐。正式取名建议结合《通用规范汉字表》与家族意愿综合考虑。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 姓氏起源 ============ -->
+<section id="origin" class="section alt">
+  <div class="container">
+    <h2>二、姓氏起源解读</h2>
+    <p class="section-desc">姓者，统其祖考之所自出；氏者，别其子孙之所自分。选择你的姓氏，看看它的起源故事。</p>
+
+    <div class="card">
+      <label for="surnameInput">输入或选择姓氏：</label>
+      <div class="origin-row">
+        <input type="text" id="surnameInput" placeholder="例如：王、李、张、欧阳" list="surnameList">
+        <datalist id="surnameList"></datalist>
+        <button id="lookupBtn" class="btn-primary">查询起源</button>
+      </div>
+      <div id="originResult" class="origin-result">
+        <p class="muted">请输入一个姓氏开始查询。数据收录了常见大姓的起源、郡望与迁徙简述。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 百家姓演化 ============ -->
+<section id="evolution" class="section">
+  <div class="container">
+    <h2>三、五千年姓氏演化 · 从上古八姓到百家姓</h2>
+
+    <div class="timeline">
+      <div class="era">
+        <div class="era-time">上古 · 母系氏族（约 5000 年前）</div>
+        <h3>上古八大姓</h3>
+        <p>中国最古老的姓氏诞生于母系氏族社会，「姓」字从女从生，多带女字旁：<b>姬、姜、姒、嬴、妘、妫、姚、姞</b>（一说包含「妊」）。姓用来标记共同的血缘与母系祖先，「同姓不婚」的规矩即源于此。</p>
+      </div>
+      <div class="era">
+        <div class="era-time">夏商周 · 封建时代</div>
+        <h3>姓与氏分离</h3>
+        <p>贵族有姓有氏：姓别血缘（女子称姓），氏别贵贱（男子称氏）。诸侯以封国为氏（齐、鲁、晋），卿大夫以封邑、官职为氏（司马、司徒、左丘）。平民此时大多只有名而无氏。</p>
+      </div>
+      <div class="era">
+        <div class="era-time">秦汉 · 公元前 221 年起</div>
+        <h3>姓氏合一</h3>
+        <p>秦灭六国、汉定天下后，宗法制度瓦解，姓与氏逐渐合而为一，平民也普遍拥有姓氏，现代意义上的「姓」自此定型。今日绝大多数姓氏都定型于这一时期。</p>
+      </div>
+      <div class="era">
+        <div class="era-time">魏晋隋唐 · 门阀时代</div>
+        <h3>郡望与大姓</h3>
+        <p>门阀士族兴起，姓氏有了高低之分，出现了「五姓七望」（崔、卢、李、郑、王）等顶级门第。唐代修《氏族志》，皇帝李姓被尊为国姓，赐姓之风盛行。</p>
+      </div>
+      <div class="era">
+        <div class="era-time">宋代 · 公元 960 年起</div>
+        <h3>《百家姓》成书</h3>
+        <p>北宋初年钱塘一位书生编成蒙学读本《百家姓》，收姓 411 个，后增补至 504 个，以「赵钱孙李、周吴郑王」开篇——「赵」为国姓，「钱」为吴越国王之姓，可见成书时的政治烙印。</p>
+      </div>
+      <div class="era">
+        <div class="era-time">明清至今</div>
+        <h3>中华姓氏的今天</h3>
+        <p>据公安部户政管理研究中心报告，目前在用姓氏约 6000 余个，但「王、李、张、刘、陈」五大姓人口合计已超 4 亿，前 100 个大姓覆盖了约 85% 的中国人。少数民族姓氏（如爱新觉罗改「金」）也不断融入中华姓氏大家庭。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📖 《百家姓》全文（504 姓）</h3>
+      <p id="baijiaxing-text" class="bjx">加载中……</p>
+    </div>
+
+    <div class="card">
+      <h3>🏅 当代人口最多的十大姓氏</h3>
+      <div class="chart">
+        <div class="bar-row"><span>王</span><div class="bar" style="width:95%">约 1.02 亿</div></div>
+        <div class="bar-row"><span>李</span><div class="bar" style="width:92%">约 1.01 亿</div></div>
+        <div class="bar-row"><span>张</span><div class="bar" style="width:88%">约 0.95 亿</div></div>
+        <div class="bar-row"><span>刘</span><div class="bar" style="width:70%">约 0.72 亿</div></div>
+        <div class="bar-row"><span>陈</span><div class="bar" style="width:65%">约 0.63 亿</div></div>
+        <div class="bar-row"><span>杨</span><div class="bar" style="width:46%">约 0.46 亿</div></div>
+        <div class="bar-row"><span>黄</span><div class="bar" style="width:33%">约 0.33 亿</div></div>
+        <div class="bar-row"><span>赵</span><div class="bar" style="width:30%">约 0.29 亿</div></div>
+        <div class="bar-row"><span>吴</span><div class="bar" style="width:29%">约 0.28 亿</div></div>
+        <div class="bar-row"><span>周</span><div class="bar" style="width:27%">约 0.27 亿</div></div>
+      </div>
+      <p class="note">数据为约数，参考公安部户政管理研究中心历年《全国姓名报告》。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>佳名堂 —— 一个关于中国姓名文化的开源小站 · <a href="https://github.com/" target="_blank" rel="noopener">GitHub 开源</a></p>
+    <p class="muted">仅供文化学习与娱乐参考，不构成取名建议。</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
